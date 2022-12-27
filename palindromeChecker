@@ -1,0 +1,39 @@
+function palindrome(str) {
+
+    str = str.replace(/\s/g, "").replace(/[^a-zA-Z0-9 ]/g, "").toLowerCase();
+    let arr = str.split('');
+    let firstPart = [];
+    let result;
+    let lastChar;
+    
+    for(let i = 0; i < arr.length / 2; i++){
+      firstPart.push(arr[i])
+    }
+    
+    let secondPart = arr.slice(firstPart.length, arr.length).reverse();
+    if(arr.length % 2 === 0){
+      for(let x = 0; x < firstPart.length; x++){
+        if(firstPart[x] == secondPart[x]){
+        result = true
+    }else{
+    result = false;
+    break;
+    }
+      }
+    }else if(arr.length % 2 === 1){
+      lastChar = firstPart.pop();
+      secondPart.push(lastChar);
+      for(let y = 0; y < firstPart.length; y++){
+        if(firstPart[y] == secondPart[y]){
+          result = true
+        }else{
+        result = false;
+        break;
+        }
+      }
+    }
+    
+    return result
+    }
+    
+    palindrome("eye");
